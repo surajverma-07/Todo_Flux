@@ -9,17 +9,13 @@ function Todos({ todo }) {
     const [text, setText] = useState(todo.text);
     const [completed,setCompleted] = useState(todo.completed)
 
-    const deleteTodo = () => {
-        dispatch(removeTodo(todo.id));
-    };
-
     const editTodo = () => {
         dispatch(updateTodo(todo.id, text));
         setEditable(false); // Assuming you want to exit edit mode after updating
     };
 
     const toggleComplete = () => {
-        dispatch(toggleCompleted(todo.id));
+        // dispatch(toggleCompleted(todo.id));
         setCompleted((prev)=> !prev)
     };
    console.log(completed)
@@ -62,7 +58,7 @@ function Todos({ todo }) {
             {/* Delete Todo Button */}
             <button
                 className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0"
-                onClick={deleteTodo}
+                onClick={() => dispatch(removeTodo(todo.id))}
             >
                 ❌
             </button>

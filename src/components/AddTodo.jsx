@@ -35,7 +35,7 @@ function AddTodo({ where }) {
     };
 
     return (
-        <form onSubmit={addTodoHandler} className='w-full bg-slate-500 flex justify-center gap-x-10 mx-auto py-2 '>
+        <form onSubmit={addTodoHandler} className='w-full h-12 bg-slate-500 flex justify-center gap-x-10 mx-auto py-1  '>
             <input
                 type="text"
                 className='text-black'
@@ -51,7 +51,7 @@ function AddTodo({ where }) {
             />
             <button
                 type='submit'
-                className='border bg-slate-900 text-white rounded-md p-3'
+                className='border bg-slate-900 text-white rounded-md p-2'
             >Add Todo</button>
         </form>
     );
