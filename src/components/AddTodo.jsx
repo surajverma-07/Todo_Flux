@@ -19,10 +19,14 @@ function AddTodo({ where }) {
             setUpcoming(false);
             setCompleted(false);
             setCurrentTodo(true);
-        }else{
+        }else if(where === "completed"){
             setCurrentTodo(false);
             setUpcoming(false);
             setCompleted(true);
+        }else{
+            setCompleted(false)
+            setUpcoming(false)
+            setCurrentTodo(false)
         }
     }, [where]);
     // console.log(currentTodo)
