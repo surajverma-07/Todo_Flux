@@ -1,11 +1,13 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 
 const  initialState = {
     todos:[{
         id:1,
         text:"Your Todo",
         date:"07-12-2004",
-        currentTodo:true,
+        editable:false,
+        currentTodo:false,
         upcoming:false,
         completed:false,
     }]
@@ -20,14 +22,14 @@ export const todoSlice = createSlice({
               id: nanoid(),
               text:action.payload.text,
               date:action.payload.date,
-              current:action.payload.current,
+              currentTodo:action.payload.currentTodo,
               upcoming:action.payload.upcoming,
               completed:action.payload.completed,
           }
           state.todos.push(todo)
         },
         removeTodo:(state,action) => {
-           state.todos.filter((todo)=> todo.id !== action.payload.id)
+          state.todos = state.todos.filter((todo)=> todo.id !== action.payload.id)
         },
         updateTodo:(state,action) => {
            state.todos.map((todo)=> todo.id === action.payload.id ?(todo.text = action.payload.text):(todo.text = todo.text))
@@ -36,16 +38,12 @@ export const todoSlice = createSlice({
            state.todos.map((todo)=> todo.id === action.payload.id ?(todo.completed = !todo.completed):(todo.completed = todo.completed))
             
         },
-        toggleCurrent:(state,action)=>{
-           state.todos.map((todo)=> todo.id === action.payload.id ?(todo.current = !todo.current):(todo.current = todo.current))
-
-        },
-        toggleUpcoming:(state,action) =>{
-           state.todos.map((todo)=> todo.id === action.payload.id ?(todo.upcoming = !todo.upcoming):(todo.upcoming = todo.upcoming))
-
-        },
+        // setCompleted:(state,action) => {
+        //     state.todos.map((todo)=> todo.id === action.payload.id ?(todo.text = action.payload.text):(todo.text = todo.text))
+        // }
+      
     }
 })
 
-export const {addTodo,removeTodo,updateTodo,toggleCompleted,toggleCurrent,toggleUpcoming} = todoSlice.actions
+export const {addTodo,removeTodo,updateTodo,toggleCompleted} = todoSlice.actions
 export default todoSlice.reducer 

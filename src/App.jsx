@@ -1,16 +1,35 @@
-import { useState } from 'react'
+import "./App.css";
+import AddTodo from "./components/AddTodo";
+import { useSelector } from "react-redux";
+import Todos from "./components/Todos";
 
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const todos = useSelector((state) => state.todos);
+  console.log(todos)
+  
   return (
-    <>
-     <div className='w-full h-full bg-slate-600 text-white text-2xl'>Jay Shree Ram</div>
-        
-    </>
-  )
+    <div className="bg-[#172842] min-h-screen py-8">
+      <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
+        <h1 className="text-2xl font-bold text-center mb-8 mt-2">
+          Manage Your Todos
+        </h1>
+        <div className="mb-4">
+          {/* Todo form goes here */}
+          <AddTodo where="current" />
+          
+        </div>
+           <div className="flex flex-wrap gap-y-3">
+              {todos.map((todo) => (
+                <div key={todo.id} className="w-full">
+                   <Todos todo={todo} />
+                </div>
+               ))}
+          </div>
+       
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
