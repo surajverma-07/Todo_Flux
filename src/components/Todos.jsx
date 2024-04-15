@@ -11,6 +11,7 @@ function Todos({ todo }) {
     const [completed,setCompleted] = useState(todo.completed)
     const [date,setDate] = useState(todo.date)
 
+    
     const editTodo = () => {
         dispatch(updateTodo(todo.id, text));
         setEditable(false); // Assuming you want to exit edit mode after updating

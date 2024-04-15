@@ -2,6 +2,7 @@ import React,{useEffect} from "react";
 import AddTodo from "./components/AddTodo";
 import { useSelector ,useDispatch} from "react-redux";
 import Todos from "./components/Todos";
+import { addTodo } from "./features/todoSlice";
 // import { loadTodosFromLocalStorage } from "./features/todoSlice";
 
 function App() {
@@ -9,11 +10,8 @@ function App() {
   console.log(todos)
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   // Dispatch the action to load todos from local storage when the component mounts
-  //   dispatch(loadTodosFromLocalStorage());
-  // }, [dispatch]); // Make sure to include dispatch in the dependency array to prevent unnecessary re-renders
-
+ 
+ 
   return (
     <div className="bg-slate-200 min-h-screen py-8 ">
       <div className="w-full max-w-[80vw] mx-auto shadow-md rounded-lg px-44 py-3 text-black">

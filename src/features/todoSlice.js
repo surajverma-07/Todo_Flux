@@ -2,7 +2,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { act } from "react-dom/test-utils";
 
 const  initialState = {
-    todos:[{
+    todos: JSON.parse(localStorage.getItem('todos')) || [{
         id:1,
         text:"Your Todo",
         date:"07-12-2004",
@@ -52,18 +52,10 @@ export const todoSlice = createSlice({
                 return todo;
             });
         },
-        saveTodosToLocalstorage: (state) => {
-            localStorage.setItem('todos', JSON.stringify(state.todos));
-        },
+        
     }
 })
 
 export const {addTodo,removeTodo,updateTodo,toggleCompleted} = todoSlice.actions
-// export const loadTodosFromLocalStorage = () => (dispatch) => {
-//     const savedTodos = localStorage.getItem('todos');
-//     if (savedTodos) {
-//         dispatch(addTodo(JSON.parse(savedTodos)));
-//     }
-// };
 
 export default todoSlice.reducer 
