@@ -41,8 +41,8 @@ function Todos({ todo }) {
 
     return (
         <div
-            className={`flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black ${
-                completed ? "bg-[#c6e9a7] " : "bg-[#ccbed7]"
+            className={`flex border border-black/10 rounded-lg px-0 md:px-3 py-1.5 xl:gap-x-3 md:gap-x-2 gap-x-1 shadow-sm text-sm md:text-lg shadow-white/50 duration-300  text-[#0F1035] ${
+                completed ? "bg-[#365486] text-[#7FC7D9]" : "bg-[#7FC7D9]"
             }`}
         >
             <input
@@ -62,7 +62,7 @@ function Todos({ todo }) {
                 readOnly={!editable}
             />
             {/* Edit, Save Button */}
-            <div className='text-black w-full'>Due Date : {date}</div>
+            <div className='text-[#7FC7D8] w-full'>Due Date : {date}</div>
             <button
                 className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 disabled:opacity-50"
                 onClick={() => {

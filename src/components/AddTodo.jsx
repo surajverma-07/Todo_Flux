@@ -47,23 +47,23 @@ function AddTodo({ where }) {
     return (
         <div>
 
-        <form onSubmit={addTodoHandler} className='w-full h-fit bg-slate-500 flex justify-center gap-x-10 mx-auto py-1  '>
+        <form onSubmit={addTodoHandler} className='w-full h-fit bg-[#365486] flex justify-center gap-x-4 md:gap-x-16 xl:gap-x-20 py-1 mx-auto rounded-lg  '>
             <input
                 type="text"
-                className='text-white bg-slate-800 rounded-lg text-center'
+                className='text-[#0F1035] bg-[#DCF2F1] rounded-lg text-center border-transparent p-0 lg:h-10 h-8 w-36 lg:w-fit text-sm lg:text-lg'
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                placeholder='Enter Task to be done'
+                placeholder='Enter Task'
                 />
             <input
                 type="date"
-                className='text-white text-center rounded-lg bg-slate-800'
+                className='text-[#0F1035] bg-[#DCF2F1] border-transparent text-center rounded-lg lg:h-10 h-8  text-sm lg:text-lg'
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 />
             <button
                 type='submit'
-                className='border bg-slate-900 text-white rounded-lg p-2'
+                className=' text-[#0F1035] bg-[#DCF2F1] p-0 rounded-lg lg:p-2  lg:h-10 h-8  text-[10px] lg:text-lg '
                 >Create Task</button>
 
         </form>

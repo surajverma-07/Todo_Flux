@@ -3,6 +3,7 @@ import AddTodo from "./components/AddTodo";
 import { useSelector ,useDispatch} from "react-redux";
 import Todos from "./components/Todos";
 import { addTodo } from "./features/todoSlice";
+import './App.css'
 // import { loadTodosFromLocalStorage } from "./features/todoSlice";
 
 function App() {
@@ -13,12 +14,12 @@ function App() {
  
  
   return (
-    <div className="bg-slate-200 min-h-screen py-8 ">
-      <div className="w-full max-w-[80vw] mx-auto shadow-md rounded-lg px-44 py-3 text-black">
+    <div className="min-h-screen bg-[#DCF2F1] xl:py-8 py-4 ">
+      <div className="font-bold text-2xl text-center xl:text-3xl text-[#0F1035] shadow-lg xl:h-16">Manage Your Todos</div>
+      <div className="w-full xl:max-w-[80vw] mx-auto xl:mt-6 mt-1 lg:mt-2  shadow-lg rounded-lg xl:px-44 py-3 max-w-[100vw]">
       
       {/* current todo starts  */}
-        <div className="text-xl  text-center mb-8 mt-2 ">
-          <div className="rounded-full w-3 h-3 bg-yellow-500 relative top-5 left-[22rem]"></div>
+        <div className="text-xl heading md:text-2xl lg:text-3xl text-center mb-4 lg:mb-8 mt-2 ">
           Planned Stage
         </div>
         <div className="mb-4">
@@ -40,11 +41,10 @@ function App() {
        {/* current todo ends  */}
 
        {/* pending todo starts  */}
-       <div className="text-xl  text-center mb-8 mt-2 ">
-          <div className="rounded-full w-3 h-3 bg-blue-500 relative top-5 left-[21rem]"></div>
+       <div className="text-xl heading md:text-2xl lg:text-3xl text-center mb-8 mt-2 ">
           Upcoming Stage
         </div>
-        <div className="mb-4">
+        <div className="mb-4 ">
           {/* Todo form goes here */}
           <AddTodo where="upcoming" />
           
@@ -63,8 +63,7 @@ function App() {
 
 
        {/* completed todo starts  */}
-       <div className="text-xl  text-center mb-8 mt-2 ">
-          <div className="rounded-full w-3 h-3 bg-green-500 relative top-5 left-[21rem]"></div>
+       <div className="text-xl heading md:text-2xl lg:text-3xl text-center mb-8 mt-2 ">
           Completed Stage
         </div>
         <div className="mb-4">
