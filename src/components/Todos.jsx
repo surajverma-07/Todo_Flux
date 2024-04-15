@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateTodo, removeTodo, toggleCompleted } from '../features/todoSlice';
 import { current } from '@reduxjs/toolkit';
@@ -9,7 +9,7 @@ function Todos({ todo }) {
     const [editable, setEditable] = useState(todo.editable);
     const [text, setText] = useState(todo.text);
     const [completed,setCompleted] = useState(todo.completed)
-   
+    const [date,setDate] = useState(todo.date)
 
     const editTodo = () => {
         dispatch(updateTodo(todo.id, text));
@@ -24,6 +24,20 @@ function Todos({ todo }) {
         
     
    console.log(completed)
+   // Function to format date from "YYYY-MM-DD" to "DD Month YYYY"
+   useEffect(()=>{
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const options = { day: '2-digit', month: 'short', year: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    }
+    
+    // Example usage
+    const formattedDate = formatDate(todo.date);
+    setDate(formattedDate); // Output: "18 Apr 2024"
+   },[date])
+
+
     return (
         <div
             className={`flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black ${
@@ -47,7 +61,7 @@ function Todos({ todo }) {
                 readOnly={!editable}
             />
             {/* Edit, Save Button */}
-            <div className='text-black w-full'>{todo.date}</div>
+            <div className='text-black w-full'>Due Date : {date}</div>
             <button
                 className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 disabled:opacity-50"
                 onClick={() => {
