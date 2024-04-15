@@ -1,24 +1,28 @@
-import React from "react";
-import "./App.css";
+import React,{useEffect} from "react";
 import AddTodo from "./components/AddTodo";
-import { useSelector } from "react-redux";
+import { useSelector ,useDispatch} from "react-redux";
 import Todos from "./components/Todos";
-
+// import { loadTodosFromLocalStorage } from "./features/todoSlice";
 
 function App() {
   const todos = useSelector((state) => state.todos);
   console.log(todos)
+  const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   // Dispatch the action to load todos from local storage when the component mounts
+  //   dispatch(loadTodosFromLocalStorage());
+  // }, [dispatch]); // Make sure to include dispatch in the dependency array to prevent unnecessary re-renders
 
-  
   return (
-    <div className="bg-[#172842] min-h-screen py-8">
-      <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
+    <div className="bg-slate-200 min-h-screen py-8 ">
+      <div className="w-full max-w-[80vw] mx-auto shadow-md rounded-lg px-44 py-3 text-black">
       
       {/* current todo starts  */}
-        <h1 className="text-2xl font-bold text-center mb-8 mt-2">
-          Current Todo 
-        </h1>
+        <div className="text-xl  text-center mb-8 mt-2 ">
+          <div className="rounded-full w-3 h-3 bg-yellow-500 relative top-5 left-[22rem]"></div>
+          Planned Stage
+        </div>
         <div className="mb-4">
           {/* Todo form goes here */}
           <AddTodo where="current" />
@@ -27,9 +31,9 @@ function App() {
         
            <div className="flex flex-wrap gap-y-3">
               {todos.map((todo) => (
-                <div key={todo.id} className="w-full">
+                <div key={todo.id} className={`${todo.currentTodo?("w-full"):("h-0")}`}>
                   {
-                    todo.currentTodo ? (<Todos todo={todo} />):("")
+                    todo.currentTodo ? (<Todos todo={todo} />):(null)
                   }
                    
                 </div>
@@ -38,9 +42,10 @@ function App() {
        {/* current todo ends  */}
 
        {/* pending todo starts  */}
-       <h1 className="text-2xl font-bold text-center mb-8 mt-2">
-          Upcoming Todo 
-        </h1>
+       <div className="text-xl  text-center mb-8 mt-2 ">
+          <div className="rounded-full w-3 h-3 bg-blue-500 relative top-5 left-[21rem]"></div>
+          Upcoming Stage
+        </div>
         <div className="mb-4">
           {/* Todo form goes here */}
           <AddTodo where="upcoming" />
@@ -48,7 +53,7 @@ function App() {
         </div>
            <div className="flex flex-wrap gap-y-3">
            {todos.map((todo) => (
-                <div key={todo.id} className="w-full">
+                <div key={todo.id} className={`${todo.upcoming?("w-full"):("h-0")}`}>
                   {
                     todo.upcoming ? (<Todos todo={todo} />):(null)
                   }
@@ -60,9 +65,10 @@ function App() {
 
 
        {/* completed todo starts  */}
-       <h1 className="text-2xl font-bold text-center mb-8 mt-2">
-          Completed Todo 
-        </h1>
+       <div className="text-xl  text-center mb-8 mt-2 ">
+          <div className="rounded-full w-3 h-3 bg-green-500 relative top-5 left-[21rem]"></div>
+          Completed Stage
+        </div>
         <div className="mb-4">
           {/* Todo form goes here */}
           <AddTodo where="completed" />
@@ -70,7 +76,7 @@ function App() {
         </div>
            <div className="flex flex-wrap gap-y-3">
            {todos.map((todo) => (
-                <div key={todo.id} className="w-full">
+                <div key={todo.id} className={`${todo.completed?("w-full"):("h-0")}`}>
                   {
                     todo.completed ? (<Todos todo={todo} />):(null)
                   }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateTodo, removeTodo, toggleCompleted } from '../features/todoSlice';
+import { current } from '@reduxjs/toolkit';
 
 function Todos({ todo }) {
     console.log(todo);
@@ -8,16 +9,20 @@ function Todos({ todo }) {
     const [editable, setEditable] = useState(todo.editable);
     const [text, setText] = useState(todo.text);
     const [completed,setCompleted] = useState(todo.completed)
+   
 
     const editTodo = () => {
         dispatch(updateTodo(todo.id, text));
         setEditable(false); // Assuming you want to exit edit mode after updating
     };
 
-    const toggleComplete = () => {
-        // dispatch(toggleCompleted(todo.id));
-        setCompleted((prev)=> !prev)
-    };
+ 
+        const toggleComplete = () => {
+            dispatch(toggleCompleted({ id: todo.id, completed: !completed }));
+            
+        };
+        
+    
    console.log(completed)
     return (
         <div
@@ -30,6 +35,7 @@ function Todos({ todo }) {
                 className="cursor-pointer"
                 checked={completed}
                 onChange={toggleComplete}
+                
             />
             <input
                 type="text"

@@ -27,23 +27,43 @@ export const todoSlice = createSlice({
               completed:action.payload.completed,
           }
           state.todos.push(todo)
+          localStorage.setItem('todos', JSON.stringify(state.todos));
         },
         removeTodo:(state,action) => {
           state.todos = state.todos.filter((todo)=> todo.id !== action.payload)
+          localStorage.setItem('todos', JSON.stringify(state.todos));
         },
         updateTodo:(state,action) => {
            state.todos.map((todo)=> todo.id === action.payload.id ?(todo.text = action.payload.text):(todo.text = todo.text))
+           localStorage.setItem('todos', JSON.stringify(state.todos));
         },
-        toggleCompleted:(state,action) => {
-           state.todos.map((todo)=> todo.id === action.payload ?(todo.completed = !todo.completed):(todo.completed = todo.completed))
-            
+        toggleCompleted: (state, action) => {
+            state.todos = state.todos.map((todo) => {
+                if (todo.id === action.payload.id) {
+                    // Toggle completed status
+                    const updatedTodo = { ...todo, completed: !todo.completed };
+                    // If completed is true, set currentTodo and upcoming to false
+                    if (updatedTodo.completed) {
+                        updatedTodo.currentTodo = false;
+                        updatedTodo.upcoming = false;
+                    }
+                    return updatedTodo;
+                }
+                return todo;
+            });
         },
-        // setCompleted:(state,action) => {
-        //     state.todos.map((todo)=> todo.id === action.payload.id ?(todo.text = action.payload.text):(todo.text = todo.text))
-        // }
-      
+        saveTodosToLocalstorage: (state) => {
+            localStorage.setItem('todos', JSON.stringify(state.todos));
+        },
     }
 })
 
 export const {addTodo,removeTodo,updateTodo,toggleCompleted} = todoSlice.actions
+// export const loadTodosFromLocalStorage = () => (dispatch) => {
+//     const savedTodos = localStorage.getItem('todos');
+//     if (savedTodos) {
+//         dispatch(addTodo(JSON.parse(savedTodos)));
+//     }
+// };
+
 export default todoSlice.reducer 
