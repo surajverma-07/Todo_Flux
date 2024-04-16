@@ -41,8 +41,8 @@ function Todos({ todo }) {
 
     return (
         <div
-            className={`flex border border-black/10 rounded-lg px-0 md:px-3 py-1.5 xl:gap-x-3 md:gap-x-2 gap-x-1 shadow-sm text-sm md:text-lg shadow-white/50 duration-300  text-[#0F1035] ${
-                completed ? "bg-[#365486] text-[#7FC7D9]" : "bg-[#7FC7D9]"
+            className={`flex border border-black/10 rounded-lg font-medium  md:px-6 py-1.5 gap-x-1   px-2 shadow-sm text-sm md:text-lg shadow-white/50 duration-300  text-[#0F1035] ${
+                completed ? "bg-[#365486] text-[#7FC7D9]" : "bg-[#7FC7D9] text-black"
             }`}
         >
             <input
@@ -54,7 +54,7 @@ function Todos({ todo }) {
             />
             <input
                 type="text"
-                className={`border outline-none w-full bg-transparent rounded-lg ${
+                className={`border outline-none w-full glow bg-transparent rounded-lg ${
                     editable ? "border-black/10 px-2" : "border-transparent"
                 } ${completed ? "line-through" : ""}`}
                 value={text}
@@ -62,9 +62,9 @@ function Todos({ todo }) {
                 readOnly={!editable}
             />
             {/* Edit, Save Button */}
-            <div className='text-[#7FC7D8] w-full'>Due Date : {date}</div>
+            <div className=' w-full glow'>Due Date : {date}</div>
             <button
-                className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 disabled:opacity-50"
+                className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 lg:mr-2 hover:bg-gray-100 shrink-0 disabled:opacity-50"
                 onClick={() => {
                     if (completed) return;
 

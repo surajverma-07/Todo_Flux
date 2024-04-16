@@ -10,3 +10,21 @@ body{
     color:#0F1035;
     font-family: "Poppins", sans-serif;
 }
+input{
+    color: #0F1035;
+}
+.glow {
+    font-size: 20px;
+    text-align: center;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 3px #DCF2F1;
+    }
+    
+    to {
+      text-shadow: 0 0 5px #0F1035;
+    }
+  }

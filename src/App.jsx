@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="min-h-screen bg-[#DCF2F1] xl:py-8 py-4 ">
       <div className="font-bold text-2xl text-center xl:text-3xl text-[#0F1035] shadow-lg xl:h-16">Manage Your Todos</div>
-      <div className="w-full xl:max-w-[80vw] mx-auto xl:mt-6 mt-1 lg:mt-2  shadow-lg rounded-lg xl:px-44 py-3 max-w-[100vw]">
+      <div className="w-full md:max-w-[80vw] mx-auto xl:mt-6 mt-1 lg:mt-2  shadow-lg rounded-lg xl:px-44 py-3 max-w-[90vw]">
       
       {/* current todo starts  */}
         <div className="text-xl heading md:text-2xl lg:text-3xl text-center mb-4 lg:mb-8 mt-2 ">

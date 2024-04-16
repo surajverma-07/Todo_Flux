@@ -57,7 +57,7 @@ function AddTodo({ where }) {
                 />
             <input
                 type="date"
-                className='text-[#0F1035] bg-[#DCF2F1] border-transparent text-center rounded-lg lg:h-10 h-8  text-sm lg:text-lg'
+                className='text-[#0F1035] bg-[#DCF2F1] cursor-pointer border-transparent text-center rounded-lg lg:h-10 h-8  text-sm lg:text-lg'
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 />
