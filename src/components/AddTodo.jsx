@@ -47,7 +47,7 @@ function AddTodo({ where }) {
     return (
         <div>
 
-        <form onSubmit={addTodoHandler} className='w-full h-fit bg-[#365486] flex justify-center gap-x-4 md:gap-x-16 xl:gap-x-20 py-1 mx-auto rounded-lg  '>
+        <form onSubmit={addTodoHandler} className='w-full h-fit bg-[#365486] flex justify-center gap-x-2 px-1 md:gap-x-16 xl:gap-x-20 py-1 mx-auto rounded-lg  '>
             <input
                 type="text"
                 className='text-[#0F1035] bg-[#DCF2F1] rounded-lg text-center border-transparent p-0 lg:h-10 h-8 md:w-36 w-28 lg:w-fit text-md lg:text-lg'
@@ -63,7 +63,7 @@ function AddTodo({ where }) {
                 />
             <button
                 type='submit'
-                className=' text-[#0F1035] bg-[#DCF2F1] -pl-10 md:-pl-6 rounded-lg lg:p-2  lg:h-10 h-8  text-md lg:text-lg '
+                className=' text-[#0F1035] bg-[#DCF2F1] -pl-10 md:-pl-6 rounded-lg lg:p-2  lg:h-10 h-8  text-sm lg:text-lg '
                 >Create Task</button>
 
         </form>
