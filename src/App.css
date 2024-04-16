@@ -14,7 +14,6 @@ input{
     color: #0F1035;
 }
 .glow {
-    font-size: 20px;
     text-align: center;
     animation: glow 2s ease-in-out infinite alternate;
   }
