@@ -54,7 +54,7 @@ function Todos({ todo }) {
             />
             <input
                 type="text"
-                className={`border outline-none w-full text-sm -ml-6 sm:ml-0 sm:text-xl glow bg-transparent rounded-lg ${
+                className={`border  outline-none w-full text-sm  sm:ml-0 sm:text-xl glow bg-transparent rounded-lg  ${
                     editable ? "border-black/10 px-2" : "border-transparent"
                 } ${completed ? "line-through" : ""}`}
                 value={text}
