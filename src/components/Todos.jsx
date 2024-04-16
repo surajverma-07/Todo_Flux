@@ -62,7 +62,7 @@ function Todos({ todo }) {
                 readOnly={!editable}
             />
             {/* Edit, Save Button */}
-            <div className=' w-full glow text-sm sm:text-xl flex -mr-24 sm:mr-0 sm:ml-0'><p className='hidden sm:inline-block'>Due Date :</p> {date}</div>
+            <div className=' w-full glow text-sm sm:text-xl flex -mr-10 items-center  p-0 sm:mr-0 sm:ml-0 '><p className='hidden sm:inline-block'>Due Date :</p> {date}</div>
             <button
                 className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 lg:mr-2 hover:bg-gray-100 shrink-0 disabled:opacity-50"
                 onClick={() => {
