@@ -1,6 +1,6 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 
+// Fetching data in todos from localStorage if available 
 const  initialState = {
     todos: JSON.parse(localStorage.getItem('todos')) || [{
         id:1,
@@ -17,6 +17,7 @@ export const todoSlice = createSlice({
     name:'todo',
     initialState,
     reducers:{
+        //Adding new Todo
         addTodo: (state,action) => {
           const  todo = {
               id: nanoid(),
@@ -29,14 +30,17 @@ export const todoSlice = createSlice({
           state.todos.push(todo)
           localStorage.setItem('todos', JSON.stringify(state.todos));
         },
+        // Delete Todo
         removeTodo:(state,action) => {
           state.todos = state.todos.filter((todo)=> todo.id !== action.payload)
           localStorage.setItem('todos', JSON.stringify(state.todos));
         },
+        //Update Todo
         updateTodo:(state,action) => {
            state.todos.map((todo)=> todo.id === action.payload.id ?(todo.text = action.payload.text):(todo.text = todo.text))
            localStorage.setItem('todos', JSON.stringify(state.todos));
         },
+        // toggle completed state because of it we will able to see completed and incompleted task in different location 
         toggleCompleted: (state, action) => {
             state.todos = state.todos.map((todo) => {
                 if (todo.id === action.payload.id) {
@@ -56,6 +60,7 @@ export const todoSlice = createSlice({
     }
 })
 
+// exporting all the reducers 
 export const {addTodo,removeTodo,updateTodo,toggleCompleted} = todoSlice.actions
 
 export default todoSlice.reducer 
